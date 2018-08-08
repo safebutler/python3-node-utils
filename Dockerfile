@@ -21,3 +21,11 @@ ADD phantomjs /usr/local/bin/
 #   popplar's pdftotext parses lines incorrectly.
 #   See emails titled 'pdftotext on prod' on why we want xpdf 3.03 and how to build it.
 ADD pdftotext /usr/bin/
+
+# https://stackoverflow.com/questions/28405902/how-to-set-the-locale-inside-a-docker-container
+# This fixes "locale.Error: unsupported locale setting"
+RUN apt-get update
+RUN apt-get install -y locales locales-all
+ENV LC_ALL en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
