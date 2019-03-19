@@ -28,8 +28,8 @@ RUN apt-get update
 RUN apt-get install -y locales locales-all
 
 # Install libs for imagemagick to be used by Wand
-RUN apt-get install libmagickwand-dev
-RUN apt-get install libmagickcore5-extra
+RUN apt-get install -y libmagickwand-dev
+RUN apt-get install -y libmagickcore5-extra
 
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
