@@ -22,9 +22,11 @@ ADD phantomjs /usr/local/bin/
 #   See emails titled 'pdftotext on prod' on why we want xpdf 3.03 and how to build it.
 ADD pdftotext /usr/bin/
 
+RUN apt-get update
+RUN apt-get upgrade
+
 # https://stackoverflow.com/questions/28405902/how-to-set-the-locale-inside-a-docker-container
 # This fixes "locale.Error: unsupported locale setting"
-RUN apt-get update
 RUN apt-get install -y locales locales-all
 
 # Install libs for imagemagick to be used by Wand
