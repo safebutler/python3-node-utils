@@ -1,4 +1,4 @@
-FROM python:3.6.3-stretch
+FROM python:3.7.2-stretch
 ENV PYTHONUNBUFFERED 1
 
 # https://nodejs.org/en/download/package-manager/
