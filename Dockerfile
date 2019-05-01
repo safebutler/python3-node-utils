@@ -1,8 +1,8 @@
-FROM python:3.7.2-stretch
+FROM python:3.7.3-stretch
 ENV PYTHONUNBUFFERED 1
 
 # https://nodejs.org/en/download/package-manager/
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_10.x stretch | bash -
 RUN apt-get install -y nodejs
 
 # Install gulp
@@ -30,6 +30,12 @@ RUN apt-get install -y locales locales-all
 
 # Install libs for imagemagick to be used by Wand
 RUN apt-get install -y libmagickwand-dev
+
+RUN apt-get install -y binutils libproj-dev gdal-bin
+
+RUN wget https://download.osgeo.org/geos/geos-3.7.1.tar.bz2 && tar xjf geos-3.7.1.tar.bz2 && cd geos-3.7.1 && ./configure && make && make install && cd ..
+
+RUN wget https://download.osgeo.org/gdal/2.4.1/gdal-2.4.1.tar.gz && tar xzf gdal-2.4.1.tar.gz && cd gdal-2.4.1 && ./configure --with-python && make && make install && cd ..
 
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
