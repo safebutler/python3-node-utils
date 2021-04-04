@@ -1,4 +1,4 @@
-FROM python:3.8-stretch
+FROM python:3.8-slim
 ENV PYTHONUNBUFFERED 1
 
 # https://nodejs.org/en/download/package-manager/
